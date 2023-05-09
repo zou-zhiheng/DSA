@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04860da7-e40f-4c2c-bc67-3fb481e15586" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DSA.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/BTreePlus/BPItem.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/BTreePlus/BPNode.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/BTreePlus/BPTree.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/BTreePlus/operation.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-    </list>
+    <list default="true" id="04860da7-e40f-4c2c-bc67-3fb481e15586" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
