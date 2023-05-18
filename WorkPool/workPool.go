@@ -1,4 +1,4 @@
-package Pool
+package WorkPool
 
 import (
 	"fmt"

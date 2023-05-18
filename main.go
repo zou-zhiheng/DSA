@@ -1,7 +1,11 @@
 package main
 
-import "DSA/Pool"
+import "DSA/Slice"
 
-func main(){
-	Pool.Demo()
+func main() {
+	//Goroutine.Demo()
+	//WorkPool.Demo()
+
+	Slice.Demo()
+
 }
