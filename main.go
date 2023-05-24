@@ -1,11 +1,9 @@
 package main
 
-import "DSA/Slice"
+import "DSA/RabbitMQ"
 
 func main() {
 	//Goroutine.Demo()
 	//WorkPool.Demo()
-
-	Slice.Demo()
-
+	//Slice.Demo()
 }
