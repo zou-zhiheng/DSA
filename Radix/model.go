@@ -71,6 +71,7 @@ func (r *RaxNode) pathMerge(bPos int) bool {
 }
 
 
+
 //打印节点信息,用于调试
 func (r *RaxNode)GetNodeInfo(bbeg int) string {
 	buff := new(bytes.Buffer)
