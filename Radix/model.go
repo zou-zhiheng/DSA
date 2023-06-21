@@ -1,5 +1,10 @@
 package Radix
 
+import (
+	"bytes"
+	"fmt"
+)
+
 type RaxNode struct {
 	bitLen int
 	bitVal []byte
@@ -10,6 +15,16 @@ type RaxNode struct {
 
 type Radix struct {
 	root [256]*RaxNode
+}
+
+func NewRadixNode() *RaxNode {
+	node := &RaxNode{}
+	node.bitLen = 0
+	node.bitVal = nil
+	node.left = nil
+	node.right = nil
+	node.val = nil
+	return node
 }
 
 func (r *RaxNode) pathMerge(bPos int) bool {
@@ -53,4 +68,66 @@ func (r *RaxNode) pathMerge(bPos int) bool {
 	r.right = child.right
 
 	return true
+}
+
+
+//打印节点信息,用于调试
+func (r *RaxNode)GetNodeInfo(bbeg int) string {
+	buff := new(bytes.Buffer)
+
+	bend := bbeg + int(r.bitLen)
+	//起始和终止字节的位置
+	cBeg := bbeg / 8; cend := bend / 8
+	//起始和终止字节的偏移量
+	oBeg := bbeg % 8; oend := bend % 8
+	for bb := bbeg; bb < bend; {
+		//获取两个数组的当前字节位置
+		dci := bb / 8
+		nci := dci - cBeg
+		byteNode := r.bitVal[nci]
+
+		//获取数据的当前字节以及循环步长
+		step := 8
+		if nci == 0 && oBeg > 0 {
+			step = 8-oBeg
+		}
+		if dci == cend && oend > 0 {
+			step = oend
+		}
+		if cBeg == cend {
+			step = int(r.bitLen)
+		}
+
+		if step != 8 {
+			buff.WriteString(fmt.Sprintf("(%08b:%d)", byteNode, byteNode))
+		} else {
+			buff.WriteByte(byteNode)
+		}
+		bb += step
+	}
+
+	if r.val != nil {
+		buff.WriteString(fmt.Sprintf("=%v", r.val))
+	}
+
+	return buff.String()
+}
+
+
+//递归打印节点信息，用于调试
+func (r *Radix) getNodeInfo(cur *RaxNode,pos int,data map[string]interface{}){
+	data["info"] = cur.GetNodeInfo(pos)
+	pos += int(cur.bitLen)
+
+	if cur.left != nil {
+		tmp := make(map[string]interface{})
+		data["left"] = tmp
+		r.getNodeInfo(cur.left, pos, tmp)
+	}
+
+	if cur.right != nil {
+		tmp := make(map[string]interface{})
+		data["right"] = tmp
+		r.getNodeInfo(cur.right, pos, tmp)
+	}
 }
